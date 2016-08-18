@@ -1,95 +1,37 @@
+import java.util.*;
 import java.io.*;
 
-public class Sejour implements Serializable{
+abstract class Sejour implements Serializable
+{
+    protected String depart [] = {"Paris","Bordeaux","Marseille","Lille","Lyon" };
+    protected String destination []= {"Pointe a Pitre","Fort de France","Tombouctou","Dakar","Casablanca"};
+
+    protected boolean disponibilite[][] = 
+       {{ true , true,  true,  true,  true  },
+        { true , false, false, true,  true  },
+        { true , false, true,  true,  false },
+        { false, true,  true,  false, false },
+        { true , false, true,  true,  false }};
+
+    protected int prixVol [][] =
+       {{ 1000     ,     1100,       700,       600,       500 },
+        { 1010     , 1010+150,   610+250,       610,       510 },
+        { 1020     , 1020+150,       720,       620,       520 },
+        { 1130+150 ,     1130,       730,   730+250,   730+300 },
+        { 1040     , 1040+150,       740,       640,   640+200 }};
     
-    private  String nom_client;
+    protected int prixRelais[][] =
+       {{    0 ,   150,    0,   0,   0 },
+        {  150 ,     0,    0,   0,   0 },
+        {    0 ,     0,    0, 250, 300 },
+        {    0 ,     0,  250,   0, 200 },
+        {    0 ,     0,  300, 200,   0 }};
+
     
-    private Destination destination;
-    double prix = 0;
+    protected int reservoir[] = {10, 25, 20, 12, 15};
     
-    private Prestation prestation;
-    int prix4 = 0;
+    protected int prixHotel [] = {250, 150, 300, 452, 320};
 
-    private Hotel reservation;
-    double prix1 = 0;
+    protected int prixVoiture [] = {35, 50, 55, 22, 34};
 
-    private Type_sejour itinerant;
-    int prix6 = 0;
-    
-    public Destination getDestination()
-    {return destination;}
-    public void setDestination(Destination dest)
-    {destination= dest;}
-
-    public double getPrix()
-    {return prix;}
-    public void setPrix(double prixd)
-    {prix = prixd;}
-
-    public int getPrix2()
-    {return prix4;}
-    public void setPrix2(int prixp)
-    {prix4  = prixp;}
-
-    public double getPrix3()
-    {return prix1;}
-    public void setPrix3(double prixh)
-    {prix1  = prixh;}
-
-    public int getPrix4()
-    {return prix6;}
-    public void setPrix4(int prixi)
-    {prix6  = prixi;}
-
-    public Prestation getPrestation()
-    {return prestation;}
-    public void setPrestation(Prestation prest)
-    {prestation = prest;}
-
-    public Hotel getHotel()
-    {return reservation;}
-    public void setHotel(Hotel host)
-    {reservation = host;}
-
-    public  Type_sejour getItinerant()
-    {return itinerant;}
-    public void setItinerant(Type_sejour itin)
-    {itinerant = itin;}
-    
-    public String getNom_client()
-    {return nom_client;}
-    
-    public void setNom_client (String nom)
-    {nom_client = nom;}
-    
-    void affichage()
-    {
-	System.out.println("Le client : ");
-	System.out.println(nom_client);
-	System.out.println("Fait le voyage : ");
-	System.out.println(destination);
-	System.out.println("ce qui lui coûte : ");
-	System.out.println(prix4);
-	System.out.println("La location coûte : ");
-	System.out.println(prix);
-	System.out.println("La nuit d'hôtel coûte : ");
-	System.out.println(prix1);
-	System.out.println("Le changement en itinérant coûte : ");
-	System.out.println(prix6);
-	
-    }
-
-	void save (BufferedWriter buff)throws IOException
-	{
-	    buff.write(nom_client);
-	    buff.newLine();
-	}
-    
 }
-
-
-
-
-	
-	
-	
